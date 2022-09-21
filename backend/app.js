@@ -7,10 +7,13 @@ const { PORT = 3000 } = process.env;
 const app = express();
 const { errorHandler } = require('./middlewares/errorHandler');
 const router = require('./routes');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(requestLogger);
 app.use(router);
+app.use(errorLogger);
 app.use(errorHandler);
 async function main() {
   try {
