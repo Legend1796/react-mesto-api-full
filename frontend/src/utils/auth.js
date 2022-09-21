@@ -1,4 +1,5 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+// export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'http://localhost:3000';
 
 function getResponseData(response) {
   if (response.ok) {
@@ -12,8 +13,9 @@ export const register = (email, password) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
+      // 'Authorization': `Bearer ${token}`
     },
-    body: JSON.stringify({ password, email })
+    body: JSON.stringify({ email, password })
   })
     .then((response) => getResponseData(response))
 };
@@ -24,7 +26,7 @@ export const autorise = (email, password) => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ password, email })
+    body: JSON.stringify({ email, password })
   })
     .then((response) => getResponseData(response))
 };
