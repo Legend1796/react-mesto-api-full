@@ -47,7 +47,8 @@ function App() {
       .then(([info, cards]) => {
         setUserInfo(info);
         setCards(cards);
-        tokenCheck();
+        setLoggedIn(true);
+        // tokenCheck();
       })
       .catch((err) => console.log(err));
   }, []);
@@ -143,7 +144,7 @@ function App() {
   }
   function handleExitProfile() {
     setLoggedIn(false);
-    localStorage.removeItem('jwt');
+    // localStorage.removeItem('jwt');
   }
 
   function onRegister({ email, password }) {
@@ -160,29 +161,29 @@ function App() {
   function onLoginIn({ email, password }) {
     auth.autorise(email, password)
       .then((res) => {
-        localStorage.setItem('jwt', res.token);
-        tokenCheck();
+        // localStorage.setItem('jwt', res.token);
+        history.push("/main");
         onAsseccAllowed();
       })
       .catch(() => onAsseccDenied());
   }
 
-  function tokenCheck() {
-    if (localStorage.getItem('jwt')) {
-      const jwt = localStorage.getItem('jwt');
-      if (jwt) {
-        auth.getContent(jwt)
-          .then((res) => {
-            if (res) {
-              setUserEmail(res.data.email);
-              setLoggedIn(true);
-              history.push("/main");
-            }
-          })
-          .catch((err) => console.log(err));
-      }
-    }
-  }
+  // function tokenCheck() {
+  //   if (localStorage.getItem('jwt')) {
+  //     const jwt = localStorage.getItem('jwt');
+  //     if (jwt) {
+  //       auth.getContent(jwt)
+  //         .then((res) => {
+  //           if (res) {
+  //             setUserEmail(res.data.email);
+  //             setLoggedIn(true);
+  //             history.push("/main");
+  //           }
+  //         })
+  //         .catch((err) => console.log(err));
+  //     }
+  //   }
+  // }
 
   React.useEffect(() => {
     function closeByEscape(evt) {

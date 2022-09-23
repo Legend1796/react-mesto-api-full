@@ -6,6 +6,7 @@ export class Api {
 
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
+      credentials: "include",
       headers: this._headers
     })
       .then(res => {
@@ -15,6 +16,7 @@ export class Api {
 
   setInitialCards(newCardData) {
     return fetch(`${this._url}/cards`, {
+      credentials: "include",
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -29,6 +31,7 @@ export class Api {
 
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
+      credentials: "include",
       headers: this._headers
     })
       .then((res) => {
@@ -38,6 +41,7 @@ export class Api {
 
   setUserInfo(userData) {
     return fetch(`${this._url}/users/me`, {
+      credentials: "include",
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -52,6 +56,7 @@ export class Api {
 
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
+      credentials: "include",
       method: 'DELETE',
       headers: this._headers
     })
@@ -62,6 +67,7 @@ export class Api {
 
   setAvatar(linkAvatar) {
     return fetch(`${this._url}/users/me/avatar`, {
+      credentials: "include",
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -75,6 +81,7 @@ export class Api {
 
   changeLikeCardStatus(cardId, method) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
+      credentials: "include",
       method: method,
       headers: this._headers
     })
@@ -94,7 +101,7 @@ export class Api {
 const api = new Api({
   baseUrl: 'http://localhost:3000',
   headers: {
-    authorization: 'f14e4888-1d0c-41bb-80a1-fc5f4ce8b4db',
+    // authorization: 'f14e4888-1d0c-41bb-80a1-fc5f4ce8b4db',
     'Content-Type': 'application/json'
   }
 });
