@@ -5,7 +5,6 @@ const { cardRouters } = require('./card');
 const { auth } = require('../middlewares/auth');
 const NotfoundError = require('../utils/NotfoundError');
 const { login, createUser, logout } = require('../controllers/user');
-// const { allowCors } = require('../middlewares/allowCors');
 
 router.get('/crash-test', () => {
   setTimeout(() => {
@@ -31,7 +30,6 @@ router.get('/signout', logout);
 router.use(auth);
 router.use(userRouters);
 router.use(cardRouters);
-// router.use(allowCors);
 router.use((req, res, next) => {
   next(new NotfoundError('Произошла ошибка'));
 });
