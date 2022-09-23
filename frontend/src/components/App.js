@@ -47,11 +47,10 @@ function App() {
       .then(([info, cards]) => {
         setUserInfo(info);
         setCards(cards);
-        setLoggedIn(true);
-        // tokenCheck();
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [loggedIn]);
+
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
   }
@@ -94,7 +93,12 @@ function App() {
       .finally(() => setIsLoading(false))
   }
   function handleCardLike(cardInfo) {
-    const isLiked = cardInfo.likes.some(i => i._id === currentUser._id);
+    const isLiked = cardInfo.likes.some(function (i) {
+      console.log(typeof (i) + ' ' + i);
+      console.log(typeof (currentUser._id) + ' ' + currentUser._id);
+      console.log(i._id === currentUser._id);
+      return i._id === currentUser._id;
+    })
     if (!isLiked) {
       api.changeLikeCardStatus(cardInfo._id, 'PUT')
         .then((newCard) => {
@@ -144,12 +148,12 @@ function App() {
   }
   function handleExitProfile() {
     setLoggedIn(false);
-    // localStorage.removeItem('jwt');
   }
 
   function onRegister({ email, password }) {
     auth.register(email, password)
       .then((res) => {
+        console.log(res);
         setUserEmail(res.data.email);
         setLoggedIn(true);
         onAsseccAllowed();
@@ -161,29 +165,13 @@ function App() {
   function onLoginIn({ email, password }) {
     auth.autorise(email, password)
       .then((res) => {
-        // localStorage.setItem('jwt', res.token);
+        setUserEmail(res.email);
+        setLoggedIn(true);
         history.push("/main");
         onAsseccAllowed();
       })
       .catch(() => onAsseccDenied());
   }
-
-  // function tokenCheck() {
-  //   if (localStorage.getItem('jwt')) {
-  //     const jwt = localStorage.getItem('jwt');
-  //     if (jwt) {
-  //       auth.getContent(jwt)
-  //         .then((res) => {
-  //           if (res) {
-  //             setUserEmail(res.data.email);
-  //             setLoggedIn(true);
-  //             history.push("/main");
-  //           }
-  //         })
-  //         .catch((err) => console.log(err));
-  //     }
-  //   }
-  // }
 
   React.useEffect(() => {
     function closeByEscape(evt) {
@@ -198,7 +186,6 @@ function App() {
       }
     }
   }, [isOpen])
-
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

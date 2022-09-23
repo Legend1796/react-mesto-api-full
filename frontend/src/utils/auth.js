@@ -10,10 +10,10 @@ function getResponseData(response) {
 
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
+    credentials: "include",
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
-      // 'Authorization': `Bearer ${token}`
     },
     body: JSON.stringify({ email, password })
   })
@@ -22,6 +22,7 @@ export const register = (email, password) => {
 
 export const autorise = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
+    credentials: "include",
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -31,12 +32,12 @@ export const autorise = (email, password) => {
     .then((response) => getResponseData(response))
 };
 
-export const getContent = (token) => {
+export const getContent = () => {
   return fetch(`${BASE_URL}/users/me`, {
+    credentials: "include",
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
     }
   })
     .then((response) => getResponseData(response))

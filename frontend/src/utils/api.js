@@ -30,11 +30,14 @@ export class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._url}/users/me`, {
+    // return fetch(`${this._url}/users/me`, {
+    return fetch(`http://localhost:3000/users/me`, {
+      method: 'GET',
       credentials: "include",
       headers: this._headers
     })
       .then((res) => {
+        // console.log(res.clone().json());
         return this._getResponseData(res);
       });
   }
@@ -92,7 +95,7 @@ export class Api {
 
   _getResponseData(res) {
     if (res.ok) {
-      return res.json();
+      return res.clone().json();
     }
     return Promise.reject(`Ошибка: ${res.status}`);
   }
@@ -101,7 +104,6 @@ export class Api {
 const api = new Api({
   baseUrl: 'http://localhost:3000',
   headers: {
-    // authorization: 'f14e4888-1d0c-41bb-80a1-fc5f4ce8b4db',
     'Content-Type': 'application/json'
   }
 });

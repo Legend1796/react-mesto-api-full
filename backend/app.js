@@ -10,7 +10,10 @@ const { errorHandler } = require('./middlewares/errorHandler');
 const router = require('./routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3001',
+  credentials: true,
+}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(requestLogger);
