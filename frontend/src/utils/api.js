@@ -30,14 +30,12 @@ export class Api {
   }
 
   getUserInfo() {
-    // return fetch(`${this._url}/users/me`, {
-    return fetch(`http://localhost:3000/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: 'GET',
       credentials: "include",
       headers: this._headers
     })
       .then((res) => {
-        // console.log(res.clone().json());
         return this._getResponseData(res);
       });
   }
