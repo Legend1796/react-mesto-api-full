@@ -94,10 +94,7 @@ function App() {
   }
   function handleCardLike(cardInfo) {
     const isLiked = cardInfo.likes.some(function (i) {
-      console.log(typeof (i) + ' ' + i);
-      console.log(typeof (currentUser._id) + ' ' + currentUser._id);
-      console.log(i._id === currentUser._id);
-      return i._id === currentUser._id;
+      return i === currentUser._id;
     })
     if (!isLiked) {
       api.changeLikeCardStatus(cardInfo._id, 'PUT')
