@@ -1,5 +1,5 @@
 // export const BASE_URL = 'https://auth.nomoreparties.co';
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'https://api.legend.students.nomoredomains.sbs';
 
 function getResponseData(response) {
   if (response.ok) {
