@@ -100,7 +100,7 @@ export class Api {
 }
 
 const api = new Api({
-  baseUrl: 'http://api.legend.students.nomoredomains.sbs',
+  baseUrl: 'http://legend.students.nomoredomains.sbs',
   headers: {
     'Content-Type': 'application/json'
   }
