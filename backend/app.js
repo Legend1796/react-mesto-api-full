@@ -11,7 +11,12 @@ const router = require('./routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 app.use(cors({
-  origin: 'http://localhost:3001',
+  origin: [
+    'http://localhost:3001',
+    'http://localhost:3000',
+    'https://legend.students.nomoredomains.sbs/',
+    'https://api.legend.students.nomoredomains.sbs/',
+  ],
   credentials: true,
 }));
 app.use(express.json());

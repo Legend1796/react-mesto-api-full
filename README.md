@@ -24,6 +24,3 @@
 * IP 178.154.206.4
 * Frontend https://legend.students.nomoredomains.sbs
 * Backend https://api.legend.students.nomoredomains.sbs
-
-
-Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
