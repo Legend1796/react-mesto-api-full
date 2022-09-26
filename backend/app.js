@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 // const cors = require('cors');
@@ -14,13 +14,15 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const allowedCors = [
   'http://legend.students.nomoredomains.sbs',
   'https://legend.students.nomoredomains.sbs',
+  'http://api.legend.students.nomoredomains.sbs',
+  'https://api.legend.students.nomoredomains.sbs',
 ];
 
 // app.use(cors({
 //   origin: 'https://legend.students.nomoredomains.sbs',
 //   credentials: true,
 // }));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
 app.use(requestLogger);
