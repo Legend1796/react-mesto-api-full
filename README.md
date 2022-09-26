@@ -21,7 +21,7 @@
 
 * Ссылка проекта на GitHub  https://legend1796.github.io/mesto/
 
-* IP 51.250.87.234
+* IP 178.154.206.4
 * Frontend https://legend.students.nomoredomains.sbs
 * Backend https://api.legend.students.nomoredomains.sbs
 
