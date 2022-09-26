@@ -100,7 +100,7 @@ export class Api {
 }
 
 const api = new Api({
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'http://api.legend.students.nomoredomains.sbs',
   headers: {
     'Content-Type': 'application/json'
   }
