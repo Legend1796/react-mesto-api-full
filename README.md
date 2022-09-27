@@ -1,4 +1,4 @@
-[![Tests](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml/badge.svg)](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml)
+
 # Проект: react-mesto-api-full
 
 Данный сайт является проектной работой и предназначен для демонстрации навыков и умений, полученных мною при обучении.
