@@ -19,7 +19,7 @@
 7. Реализована регистрация и авторизация пользователей
 8. Вся функциональность приложения доступна только авторизованным пользователям
 
-* Ссылка проекта на GitHub  https://legend1796.github.io/mesto/
+* Ссылка проекта на GitHub  https://github.com/Legend1796/react-mesto-api-full
 
 * IP 178.154.206.4
 * Frontend https://legend.students.nomoredomains.sbs
