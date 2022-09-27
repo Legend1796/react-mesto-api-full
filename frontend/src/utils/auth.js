@@ -1,4 +1,3 @@
-// export const BASE_URL = 'http://localhost:3000';
 export const BASE_URL = 'https://api.legend.students.nomoredomains.sbs';
 
 function getResponseData(response) {
@@ -31,14 +30,3 @@ export const autorise = (email, password) => {
   })
     .then((response) => getResponseData(response))
 };
-
-export const getContent = () => {
-  return fetch(`${BASE_URL}/users/me`, {
-    credentials: "include",
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  })
-    .then((response) => getResponseData(response))
-}

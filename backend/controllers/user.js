@@ -120,6 +120,7 @@ module.exports.login = async (req, res, next) => {
       const isUserValid = await bcrypt.compare(password, user.password);
       if (isUserValid) {
         const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+        console.log(res);
         res.cookie('jwt', token, { maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: true });
         res.send({
           _id: user._id, name: user.name, about: user.about, avatar: user.avatar, email: user.email,
