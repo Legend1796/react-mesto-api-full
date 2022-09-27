@@ -27,40 +27,14 @@ async function main() {
 
 main();
 
-// const allowedCors = [
-//   'http://legend.students.nomoredomains.sbs',
-//   'https://legend.students.nomoredomains.sbs',
-//   'https://legend.students.nomoredomains.sbs',
-//   'http://api.legend.students.nomoredomains.sbs',
-//   'https://api.legend.students.nomoredomains.sbs',
-//   'http://localhost:3000',
-//   'http://localhost:3001',
-// ];
-// app.use((req, res, next) => {
-//   console.log(req.headers);
-//   const { origin } = req.headers;
-//   const { method } = req;
-//   const requestHeaders = req.headers['access-control-request-headers'];
-//   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-
-//   if (allowedCors.includes(origin)) {
-//     res.header('Access-Control-Allow-Origin', origin);
-//     res.header('Access-Control-Allow-Credentials', true);
-//   }
-
-//   if (method === 'OPTIONS') {
-//     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-//     res.header('Access-Control-Allow-Headers', requestHeaders);
-//     return res.end();
-//   }
-//   return next();
-// });
 app.use(cors({
   origin: [
     'http://legend.students.nomoredomains.sbs',
     'https://legend.students.nomoredomains.sbs',
     'http://api.legend.students.nomoredomains.sbs',
     'https://api.legend.students.nomoredomains.sbs',
+    'http://localhost:3000',
+    'http://localhost:3001',
   ],
   credentials: true,
 }));
