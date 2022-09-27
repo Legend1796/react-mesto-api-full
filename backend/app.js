@@ -20,7 +20,24 @@ const allowedCors = [
   'http://api.legend.students.nomoredomains.sbs/',
   'https://api.legend.students.nomoredomains.sbs/',
 ];
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  const { method } = req;
+  const requestHeaders = req.headers['access-control-request-headers'];
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', true);
+  }
+
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+    res.header('Access-Control-Allow-Headers', requestHeaders);
+    return res.end();
+  }
+  return next();
+});
 app.use(express.json());
 app.use(cookieParser());
 app.use(requestLogger);
@@ -29,35 +46,15 @@ app.use(requestLogger);
 //   origin: [
 //     'http://legend.students.nomoredomains.sbs',
 //     'https://legend.students.nomoredomains.sbs',
-//     'http://localhost:3001',
-//     'http://localhost:3000',
-//     'https://localhost:3001',
-//     'http://localhost:3001',
+//     'http://api.legend.students.nomoredomains.sbs',
+//     'https://api.legend.students.nomoredomains.sbs',
+//     'http://api.legend.students.nomoredomains',
+//     'https://api.legend.students.nomoredomains',
+//     'http://api.legend.students.nomoredomains.sbs/',
+//     'https://api.legend.students.nomoredomains.sbs/',
 //   ],
 //   credentials: true,
 // }));
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Origin', allowedCors);
-  const { origin } = req.headers;
-  console.log(req.headers);
-  console.log(origin);
-  // if (allowedCors.includes(origin)) {
-  //   res.header('Access-Control-Allow-Origin', origin);
-  // }
-  const { method } = req;
-  const requestHeaders = req.headers['access-control-request-headers'];
-
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', requestHeaders);
-    res.end();
-    return;
-  }
-  next();
-});
-
 app.use(router);
 app.use(errorLogger);
 app.use(errorHandler);

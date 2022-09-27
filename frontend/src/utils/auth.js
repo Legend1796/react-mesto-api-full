@@ -34,7 +34,7 @@ export const autorise = (email, password) => {
 
 export const getContent = () => {
   return fetch(`${BASE_URL}/users/me`, {
-    credentials: "include",
+    // credentials: "include",
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
