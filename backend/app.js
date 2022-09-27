@@ -38,10 +38,13 @@ app.use(requestLogger);
 // }));
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Origin', allowedCors);
   const { origin } = req.headers;
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
+  console.log(req.headers);
+  console.log(origin);
+  // if (allowedCors.includes(origin)) {
+  //   res.header('Access-Control-Allow-Origin', origin);
+  // }
   const { method } = req;
   const requestHeaders = req.headers['access-control-request-headers'];
 
