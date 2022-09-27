@@ -39,17 +39,24 @@ function App() {
   const history = useHistory();
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link || isInfoTooltipOpen;
 
+
+  React.useEffect(() => {
+    if (loggedIn === true) {
+      Promise.all([
+        api.getUserInfo(),
+        api.getInitialCards()])
+        .then(([info, cards]) => {
+          console.log(cards);
+          setUserInfo(info);
+          setCards(cards);
+        })
+        .catch((err) => console.log(err));
+    };
+  }, [loggedIn]);
+
   React.useEffect(() => {
     console.log(loggedIn);
-    Promise.all([
-      api.getUserInfo(),
-      api.getInitialCards()])
-      .then(([info, cards]) => {
-        console.log(cards);
-        setUserInfo(info);
-        setCards(cards);
-      })
-      .catch((err) => console.log(err));
+
   }, [loggedIn]);
 
   function handleEditProfileClick() {

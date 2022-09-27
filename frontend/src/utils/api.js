@@ -16,9 +16,9 @@ export class Api {
 
   setInitialCards(newCardData) {
     return fetch(`${this._url}/cards`, {
-      credentials: "include",
       method: 'POST',
       headers: this._headers,
+      credentials: "include",
       body: JSON.stringify({
         name: newCardData.name,
         link: newCardData.link
@@ -32,8 +32,8 @@ export class Api {
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
-      credentials: "include",
-      headers: this._headers
+      headers: this._headers,
+      credentials: "include"
     })
       .then((res) => {
         return this._getResponseData(res);
