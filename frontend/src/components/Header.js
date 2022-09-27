@@ -11,11 +11,11 @@ function Header({ userEmail, exitProfile }) {
           <button className="header__link" onClick={exitProfile}>Выйти</button>
         </div>
       </Route>
-      <Route path="/signup">
-        <Link className="header__link" to="signin">Войти</Link>
+      <Route path="/sign-up">
+        <Link className="header__link" to="sign-in">Войти</Link>
       </Route>
       <Route path="/signin">
-        <Link className="header__link" to="signup">Регистрация</Link>
+        <Link className="header__link" to="sign-up">Регистрация</Link>
       </Route>
     </header>
   )
