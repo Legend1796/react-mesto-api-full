@@ -13,14 +13,14 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const allowedCors = [
   'http://legend.students.nomoredomains.sbs',
   'https://legend.students.nomoredomains.sbs',
+  'https://legend.students.nomoredomains.sbs',
   'http://api.legend.students.nomoredomains.sbs',
   'https://api.legend.students.nomoredomains.sbs',
-  'http://api.legend.students.nomoredomains',
-  'https://api.legend.students.nomoredomains',
-  'http://api.legend.students.nomoredomains.sbs/',
-  'https://api.legend.students.nomoredomains.sbs/',
+  'http://localhost:3000',
+  'http://localhost:3001',
 ];
 app.use((req, res, next) => {
+  console.log(req.headers);
   const { origin } = req.headers;
   const { method } = req;
   const requestHeaders = req.headers['access-control-request-headers'];
