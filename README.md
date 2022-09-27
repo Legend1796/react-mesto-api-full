@@ -21,6 +21,7 @@
 
 * Ссылка проекта на GitHub  https://github.com/Legend1796/react-mesto-api-full
 
-* Frontend https://legend.students.nomoredomains.sbs
-* Backend https://api.legend.students.nomoredomains.sbs
-* IP 178.154.206.4
+IP 178.154.206.4
+Frontend https://legend.students.nomoredomains.sbs
+Backend https://api.legend.students.nomoredomains.sbs
+
