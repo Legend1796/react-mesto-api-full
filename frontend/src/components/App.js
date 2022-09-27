@@ -46,7 +46,6 @@ function App() {
         api.getUserInfo(),
         api.getInitialCards()])
         .then(([info, cards]) => {
-          console.log(cards);
           setUserInfo(info);
           setCards(cards);
         })
