@@ -26,7 +26,9 @@ app.use(cors({
     'http://legend.students.nomoredomains.sbs',
     'https://legend.students.nomoredomains.sbs',
     'http://localhost:3001',
+    'http://localhost:3000',
     'https://localhost:3001',
+    'http://localhost:3001',
   ],
   credentials: true,
 }));

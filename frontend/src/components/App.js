@@ -14,7 +14,6 @@ import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
 import api from '../utils/api';
-// import auth from '../utils/api';
 import Login from './Login';
 import Register from './Register';
 import InfoTooltip from './InfoTooltip';
@@ -41,10 +40,12 @@ function App() {
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link || isInfoTooltipOpen;
 
   React.useEffect(() => {
+    console.log(loggedIn);
     Promise.all([
       api.getUserInfo(),
       api.getInitialCards()])
       .then(([info, cards]) => {
+        console.log(cards);
         setUserInfo(info);
         setCards(cards);
       })
@@ -151,7 +152,7 @@ function App() {
     auth.register(email, password)
       .then((res) => {
         console.log(res);
-        setUserEmail(res.data.email);
+        setUserEmail(res.email);
         setLoggedIn(true);
         onAsseccAllowed();
         history.push('/main');
@@ -190,14 +191,14 @@ function App() {
         <Header loggedIn={loggedIn} userEmail={userEmail} exitProfile={handleExitProfile} />
         <Switch>
           <ProtectedRoute path="/main" loggedIn={loggedIn} component={Main} cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} onCardClick={handleCardClick} onEditProfile={handleEditProfileClick} isAddPlacePopupOpen={handleAddPlaceClick} isEditAvatarPopupOpen={handleEditAvatarClick} />
-          <Route path="/sign-up">
+          <Route path="/signup">
             <Register onRegister={onRegister} />
           </Route>
-          <Route path="/sign-in">
+          <Route path="/signin">
             <Login onLoginIn={onLoginIn} />
           </Route>
           <Route exact path="/">
-            {loggedIn ? <Redirect to="/main" /> : <Redirect to="/sign-in" />}
+            {loggedIn ? <Redirect to="/main" /> : <Redirect to="/signin" />}
           </Route>
         </Switch>
         <Footer />
