@@ -39,19 +39,18 @@ function App() {
   const history = useHistory();
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link || isInfoTooltipOpen;
 
-
-  // React.useEffect(() => {
-  //   if (loggedIn === true) {
-  //     Promise.all([
-  //       api.getUserInfo(),
-  //       api.getInitialCards()])
-  //       .then(([info, cards]) => {
-  //         setUserInfo(info);
-  //         setCards(cards);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   };
-  // }, [loggedIn]);
+  React.useEffect(() => {
+    if (loggedIn === true) {
+      Promise.all([
+        api.getUserInfo(),
+        api.getInitialCards()])
+        .then(([info, cards]) => {
+          setUserInfo(info);
+          setCards(cards);
+        })
+        .catch((err) => console.log(err));
+    };
+  }, [loggedIn]);
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -152,7 +151,6 @@ function App() {
   function onRegister({ email, password }) {
     auth.register(email, password)
       .then((res) => {
-        console.log(res);
         setUserEmail(res.email);
         setLoggedIn(true);
         onAsseccAllowed();
