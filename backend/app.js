@@ -10,7 +10,6 @@ const app = express();
 const { errorHandler } = require('./middlewares/errorHandler');
 const router = require('./routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const { cors } = require('./middlewares/cors');
 
 async function main() {
   try {
