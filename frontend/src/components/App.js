@@ -53,11 +53,6 @@ function App() {
     };
   }, [loggedIn]);
 
-  React.useEffect(() => {
-    console.log(loggedIn);
-
-  }, [loggedIn]);
-
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
   }
