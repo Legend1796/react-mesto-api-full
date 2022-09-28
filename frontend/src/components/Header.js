@@ -14,7 +14,7 @@ function Header({ userEmail, exitProfile }) {
       <Route path="/sign-up">
         <Link className="header__link" to="sign-in">Войти</Link>
       </Route>
-      <Route path="/signin">
+      <Route path="/sign-in">
         <Link className="header__link" to="sign-up">Регистрация</Link>
       </Route>
     </header>

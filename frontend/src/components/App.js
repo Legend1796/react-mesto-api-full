@@ -169,7 +169,6 @@ function App() {
   function onLoginIn({ email, password }) {
     auth.autorise(email, password)
       .then((res) => {
-        console.log(res);
         setUserEmail(res.email);
         setLoggedIn(true);
         history.push("/main");
