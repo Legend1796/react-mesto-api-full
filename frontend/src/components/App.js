@@ -191,14 +191,14 @@ function App() {
         <Header loggedIn={loggedIn} userEmail={userEmail} exitProfile={handleExitProfile} />
         <Switch>
           <ProtectedRoute path="/main" loggedIn={loggedIn} component={Main} cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} onCardClick={handleCardClick} onEditProfile={handleEditProfileClick} isAddPlacePopupOpen={handleAddPlaceClick} isEditAvatarPopupOpen={handleEditAvatarClick} />
-          <Route path="/signup">
+          <Route path="/sign-up">
             <Register onRegister={onRegister} />
           </Route>
-          <Route path="/signin">
+          <Route path="/sign-in">
             <Login onLoginIn={onLoginIn} />
           </Route>
           <Route exact path="/">
-            {loggedIn ? <Redirect to="/main" /> : <Redirect to="/signin" />}
+            {loggedIn ? <Redirect to="/main" /> : <Redirect to="/sign-in" />}
           </Route>
         </Switch>
         <Footer />
