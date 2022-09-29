@@ -6,6 +6,7 @@ export class Api {
 
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
+      method: 'GET',
       credentials: "include",
       headers: this._headers
     })

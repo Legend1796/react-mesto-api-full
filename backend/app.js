@@ -8,7 +8,7 @@ const cors = require('cors');
 const { PORT = 3000 } = process.env;
 const app = express();
 const { errorHandler } = require('./middlewares/errorHandler');
-const router = require('./routes');
+const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 async function main() {

@@ -41,6 +41,7 @@ function App() {
 
   React.useEffect(() => {
     if (loggedIn === true) {
+      console.log(loggedIn);
       Promise.all([
         api.getUserInfo(),
         api.getInitialCards()])
