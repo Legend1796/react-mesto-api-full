@@ -41,7 +41,6 @@ function App() {
 
   React.useEffect(() => {
     if (loggedIn === true) {
-      console.log(loggedIn);
       Promise.all([
         api.getUserInfo(),
         api.getInitialCards()])
@@ -166,7 +165,6 @@ function App() {
         setUserEmail(res.email);
         setLoggedIn(true);
         history.push("/main");
-        onAsseccAllowed();
       })
       .catch(() => onAsseccDenied());
   }
@@ -191,14 +189,14 @@ function App() {
         <Header loggedIn={loggedIn} userEmail={userEmail} exitProfile={handleExitProfile} />
         <Switch>
           <ProtectedRoute path="/main" loggedIn={loggedIn} component={Main} cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} onCardClick={handleCardClick} onEditProfile={handleEditProfileClick} isAddPlacePopupOpen={handleAddPlaceClick} isEditAvatarPopupOpen={handleEditAvatarClick} />
-          <Route path="/sign-up">
+          <Route path="/signup">
             <Register onRegister={onRegister} />
           </Route>
-          <Route path="/sign-in">
+          <Route path="/signin">
             <Login onLoginIn={onLoginIn} />
           </Route>
           <Route exact path="/">
-            {loggedIn ? <Redirect to="/main" /> : <Redirect to="/sign-in" />}
+            {loggedIn ? <Redirect to="/main" /> : <Redirect to="/signin" />}
           </Route>
         </Switch>
         <Footer />

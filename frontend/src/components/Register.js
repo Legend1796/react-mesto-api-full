@@ -26,7 +26,7 @@ function Register({ onRegister }) {
       </Form>
       <div className="login__signup">
         <p className="login__signup-text">Уже зарегистрированы?</p>
-        <Link to="/sign-in" className="login__link">Войти</Link>
+        <Link to="/signin" className="login__link">Войти</Link>
       </div>
     </div>
   )
